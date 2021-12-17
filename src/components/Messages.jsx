@@ -1,5 +1,5 @@
 
-const Message = (props) => {
+const Messages = (props) => {
 //   let time;
 //   const checkTime =() =>{  
 //   let t = new Date();
@@ -12,11 +12,16 @@ const Message = (props) => {
 //   checkTime();
     return (
         <div className='messages'>
+            {props.messages.map((message)=> <div className={'message ' + 'message-author-' + message.author}>
+                <div className={"message-header"}> {message.author} </div>
+                {message.text}
+            </div>
+
+            )}
           <div className="message" >
-          {/* <div className="message-header">Я <span className="message-time">{time}</span></div> */}
-           {props.message}  </div>
+          </div>
         </div>
     );
 };
 
-export default Message;
+export default Messages;

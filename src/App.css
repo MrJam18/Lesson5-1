@@ -14,9 +14,6 @@
 .root {
   height: 100%;
 }
-.message {
-  height: 100px;
-}
 .sender-input {
   background-color: transparent;
   margin-bottom: 10px;
@@ -50,5 +47,12 @@
   flex-direction: column;
 }
 .message {
+  margin: 10px;
+}
+.message-author-user {
   align-self: flex-end;
+  text-align: right;
+}
+.message-header {
+  font-weight: 500;
 }
