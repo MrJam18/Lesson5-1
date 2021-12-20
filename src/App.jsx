@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import ListComp from './components/ListComp';
 import Messages from './components/Messages.jsx';
 import Sender from './components/Sender.jsx';
 import authors from './components/utils/authors';
@@ -7,11 +8,13 @@ import authors from './components/utils/authors';
 const App = () => {
   let [messageList, setMessageList] = useState([]);
   const handleMessage = (message) => {
+    if (message !== '') {
     pushMessageList(message, authors.user)
+    }
   }
   const pushMessageList = (text, author)=> {
     setMessageList((oldMessageList)=> {
-      return [...oldMessageList, {text: text, author: author}];
+      return [...oldMessageList, {text: text, author: author, id: Date.now()}];
     })
   }
   useEffect(()=>{
@@ -27,9 +30,12 @@ const App = () => {
   return (
     <>
     <div className="container">
-    <Messages 
+    <ListComp/>
+    <div className="container-right">
+      <Messages 
             messages = {messageList}/>
     <Sender handleMessage = {handleMessage}></Sender>
+    </div>
     </div>
     </>
   );

@@ -12,13 +12,13 @@ const Messages = (props) => {
 //   checkTime();
     return (
         <div className='messages'>
-            {props.messages.map((message)=> <div className={'message ' + 'message-author-' + message.author}>
+            {props.messages.map((message)=> <div className={'message message-author-' + message.author} key={message.id}>
                 <div className={"message-header"}> {message.author} </div>
                 {message.text}
             </div>
 
             )}
-          <div className="message" >
+          <div className="senderPlace" >
           </div>
         </div>
     );

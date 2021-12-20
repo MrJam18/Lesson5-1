@@ -1,16 +1,38 @@
 .sender {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   height: 50px;
-  background: #f8f793;
+  background: #c6eaec;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  background: -moz-linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  background: linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
 }
 .container {
-  min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
 }
+
 .root {
   height: 100%;
 }
@@ -19,7 +41,7 @@
   margin-bottom: 10px;
   border: none;
   border-bottom: 1px solid black;
-  width: 95vw;
+  width: 95%;
   font-size: 200%;
   font-family: monospace;
   padding: 0;
@@ -45,6 +67,9 @@
 .messages {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 50px);
+  overflow: auto;
 }
 .message {
   margin: 10px;
@@ -56,3 +81,21 @@
 .message-header {
   font-weight: 500;
 }
+.list-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.senderPlace {
+  height: 50px;
+}
+.container-right {
+  height: 100vh;
+  position: relative;
+  flex-grow: 1;
+}
+@media screen and (max-width: 1024px) {
+  .chatList {
+    width: 200px !important;
+  }
+} ;
