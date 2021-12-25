@@ -1,3 +1,3 @@
 
-let authors = {bot: 'bot', user: 'user'}
+let authors = {bot: 'bot', user: 'user',}
 export default authors;

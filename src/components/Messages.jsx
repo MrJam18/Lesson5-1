@@ -1,4 +1,3 @@
-
 const Messages = (props) => {
 //   let time;
 //   const checkTime =() =>{  
@@ -11,6 +10,7 @@ const Messages = (props) => {
 //   }
 //   checkTime();
     return (
+        <>
         <div className='messages'>
             {props.messages.map((message)=> <div className={'message message-author-' + message.author} key={message.id}>
                 <div className={"message-header"}> {message.author} </div>
@@ -18,9 +18,10 @@ const Messages = (props) => {
             </div>
 
             )}
-          <div className="senderPlace" >
           </div>
+          <div className="senderPlace" >
         </div>
+        </>
     );
 };
 

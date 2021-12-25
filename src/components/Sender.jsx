@@ -18,13 +18,13 @@ const useStyles = makeStyles({
   }
 })
 
-const Sender = (props) => {
+const Sender = ({handleMessage}) => {
     const input = useRef(null);
     const classes = useStyles();
     const inputHandler = (ev) => {
     ev.preventDefault();
     const message = input.current.value;
-    props.handleMessage(message);
+    handleMessage(message);
     input.current.value = '';
   }
     return (
