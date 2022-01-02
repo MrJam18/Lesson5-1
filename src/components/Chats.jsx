@@ -4,30 +4,37 @@ import './App.css';
 import Messages from './Messages.jsx';
 import Sender from './Sender.jsx';
 import {authors} from './utils/authors';
+import {useSelector, useDispatch} from 'react-redux';
+import { addMessage } from '../store/messages/actions';
+import { getMessageList } from '../store/messages/selectors';
+import { getChatList } from '../store/chatList/selectors';
 
-const Chats = ({pushMessage, messageList, chatList}) => {
+const Chats = () => {
   const { chatID } = useParams();
-  let chatAuthor;
-  for (const element of chatList) {
-    if (element.id === chatID ) {
-      chatAuthor = element.name;
+  const messageList = useSelector(getMessageList)
+  const dispatch = useDispatch();
+  const chats = useSelector(getChatList)
+  const chatAuthor = chats.find((el)=> {
+    if (el.id === chatID) {
+      return true;
     }
-  }
+    return false
+  })?.name;
   const handleMessage = (message) => {
     if (message !== '') {
-           pushMessage(message, authors.user, chatID)
+           dispatch(addMessage(chatID, message, authors.user));
            }
   }
   useEffect(()=>{
     const timer = setTimeout(()=>{
       if (messageList[chatID][messageList[chatID].length-1]?.author === authors.user) {
-        pushMessage('hello, i am bot, glad to see you wanderer', chatAuthor, chatID)
+        dispatch(addMessage(chatID, 'hello, i am bot, glad to see you wanderer', chatAuthor));
       }
     }, 1500);
     return ()=> {
       clearTimeout(timer);
     }
-  }, [messageList[chatID]])
+  }, [messageList[chatID]]);
   if (!messageList[chatID]) {
     return <Navigate to= '/chats'/>
   }

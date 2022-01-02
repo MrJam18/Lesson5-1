@@ -9,6 +9,11 @@ import { NavLink, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Button, Icon, IconButton, TextField } from '@material-ui/core';
 import { useRef } from 'react';
+import { addChat, deleteChat } from '../store/chatList/actions';
+import {useSelector, useDispatch} from 'react-redux';
+import { addMessageList } from '../store/messages/actions';
+import { getChatList } from '../store/chatList/selectors';
+
 const useStyles = makeStyles({
     list: {
         width: '300px',
@@ -22,10 +27,12 @@ const useStyles = makeStyles({
       margin: '15px auto',
     }
 })
-
-const ChatList = ({chatList, pushChatList, deleteChat}) => {
+let newChatID = 5;
+const ChatList = () => {
+  const chatList = useSelector(getChatList)
   const { chatID } = useParams();
   const classes = useStyles();
+  const dispatch = useDispatch();
   const input = useRef();
   const [addChatToggle, setAddChatToggle] = useState(true);
   const Assistent = ()=> {
@@ -53,13 +60,16 @@ const ChatList = ({chatList, pushChatList, deleteChat}) => {
   }
   const addChatHandler = (ev) => {
     ev.preventDefault();
-    pushChatList(input.current.value);
+    newChatID++;
+    const fullChatID = 'chat' + newChatID;
+    dispatch(addChat(input.current.value, fullChatID));
+    dispatch(addMessageList(fullChatID))
     setAddChatToggle(true);
   }
   const deleteChatHandler = (ev) => {
     ev.preventDefault();
     let currentChatID = ev.target.getAttribute('data-id');
-    deleteChat(currentChatID);
+    dispatch(deleteChat(currentChatID))
   }
     return (
       <>
