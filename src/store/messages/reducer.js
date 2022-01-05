@@ -11,13 +11,18 @@ export const messagesReducer = (state = initialMessageList, action) => {
         case 'MESSAGES::ADD_MESSAGE': 
         return ({
             ...state,
-             [action.chatID]: [...state[action.chatID], {text: action.message, id: Date.now(), author: action.author}]
+             [action.chatID]: [...state[action.chatID], {text: action.message, id: action.id, author: action.author}]
         })
         case 'MESSAGES::ADD_MESSAGE_LIST':
         return ({
             ...state,
             [action.chatID]: []
         })
+        case 'MESSAGES::DELETE_MESSAGE_LIST':
+            delete state[action.chatID]
+            return ({
+                ...state
+            })
         default: return state;
     }
 }

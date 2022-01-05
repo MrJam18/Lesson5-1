@@ -11,7 +11,7 @@ import { Button, Icon, IconButton, TextField } from '@material-ui/core';
 import { useRef } from 'react';
 import { addChat, deleteChat } from '../store/chatList/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import { addMessageList } from '../store/messages/actions';
+import { addMessageList, deleteMessageList } from '../store/messages/actions';
 import { getChatList } from '../store/chatList/selectors';
 
 const useStyles = makeStyles({
@@ -42,7 +42,7 @@ const ChatList = () => {
     }
   const AddChatInput = () => {
       return <form className="add-chat-input" onSubmit={addChatHandler}>
-        <TextField id="standard-basic" label="Enter chat-name" inputRef={input} className={classes.input} />
+        <TextField id="standard-basic" label="Enter chat-name" inputRef={input} className={classes.input} autoFocus />
         <Button variant="contained" color="primary" onClick={addChatHandler} >
           Submit
         </Button>
@@ -69,14 +69,22 @@ const ChatList = () => {
   const deleteChatHandler = (ev) => {
     ev.preventDefault();
     let currentChatID = ev.target.getAttribute('data-id');
-    dispatch(deleteChat(currentChatID))
+    dispatch(deleteChat(currentChatID));
+    dispatch(deleteMessageList(currentChatID));
   }
+  const setFocusOnSender = () => {
+    if (chatID) {
+    const sender = document.querySelector('.sender').querySelector('.MuiInputBase-input');
+    sender.focus();
+    }
+  }
+
     return (
       <>
       <div className="container-flex">
       <List component="nav" aria-label="main mailbox folders" className={'chatList ' + classes.list}>
       {chatList.map((chat)=>{
-        return (<NavLink to={`/chats/${chat.id}`} key= {chat.id} className='link chat-list__link'>
+        return (<NavLink to={`/chats/${chat.id}`} key= {chat.id} className='link chat-list__link' onClick={setFocusOnSender}>
           <ListItem button selected = {chat.id === chatID ? true : false} >
                <ListItemIcon>
                <img src= {`/img/${chat.img}`} alt={chat.name} className='list-img'/>

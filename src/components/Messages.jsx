@@ -1,19 +1,18 @@
 const Messages = (props) => {
-//   let time;
-//   const checkTime =() =>{  
-//   let t = new Date();
-//   let timeArray = [];
-// timeArray.push(t.getUTCHours()+4);
-// timeArray.push(t.getUTCMinutes());
-// timeArray.push(t.getUTCSeconds());
-// time = `${timeArray[0]}:${timeArray[1]}:${timeArray[2]}`;
-//   }
-//   checkTime();
+  const changeTimeFormat = (time) =>{  
+    let t = new Date(time);
+    let hours = t.getUTCHours()+4;
+    let minutes = t.getUTCMinutes();
+    if (hours < 10) hours = '0'+ hours;
+    if (minutes < 10) minutes = '0' + minutes;
+  return `${hours}:${minutes}`;
+    }
+    
     return (
         <>
         <div className='messages'>
-            {props.messages.map((message)=> <div className={'message message-author-' + message.author} key={message.id}>
-                <div className={"message-header"}> {message.author} </div>
+            {props.messages.map((message)=> <div className={message.author !== props.chatAuthor ? 'message message-author-me' : 'message message-author-chatUser'} key={message.id}>
+                <div className={"message-header"}> {message.author} <span className="message__time">{changeTimeFormat(message.id)}</span></div>
                 {message.text}
             </div>
 
