@@ -19,10 +19,9 @@ export const messagesReducer = (state = initialMessageList, action) => {
             [action.chatID]: []
         })
         case 'MESSAGES::DELETE_MESSAGE_LIST':
-            delete state[action.chatID]
-            return ({
-                ...state
-            })
+            const newState = {...state};
+            delete newState[action.chatID];
+            return newState;
         default: return state;
     }
 }

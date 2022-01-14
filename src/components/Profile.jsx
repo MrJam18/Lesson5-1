@@ -2,7 +2,7 @@ import { Checkbox, FormControlLabel, Radio, RadioGroup, TextField } from '@mater
 import { makeStyles } from '@material-ui/styles';
 import React, { useState } from 'react';
 import { useRef } from 'react';
-import styles from './profile.module.css';
+import styles from '../css/profile.module.css';
 import {useSelector, useDispatch} from 'react-redux';
 import { changeProfileData } from '../store/profile/actions';
 import { getProfileData } from '../store/profile/selectors';

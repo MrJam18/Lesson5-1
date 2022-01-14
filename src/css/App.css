@@ -178,6 +178,14 @@
   font-size: 12.5px;
   margin-left: 5px;
 }
+.flexBox {
+  display: flex;
+}
+.MuiCircularProgress-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (max-width: 1024px) {
   .chatList {
     width: 200px !important;

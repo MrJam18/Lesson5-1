@@ -5,6 +5,7 @@ import ChatList from './ChatList.jsx';
 import Home from './Home.jsx';
 import Profile from './Profile.jsx';
 import NotFound from './NotFound.jsx';
+import News from './News.jsx';
 
 const Router = () => {
     return (
@@ -13,6 +14,7 @@ const Router = () => {
                 <li className='header-menu-element'><NavLink to='/' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'}>HOME</NavLink></li>
                 <li className='header-menu-element'><NavLink to='chats' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >CHATS</NavLink></li>
                 <li className='header-menu-element'><NavLink to='profile' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >PROFILE</NavLink></li>
+                <li className='header-menu-element'><NavLink to='news' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >NEWS</NavLink></li>
             </ul>
             <Routes>
                 <Route path='/profile' element= {<Profile />} exact></Route>
@@ -22,6 +24,7 @@ const Router = () => {
                 </Route>
                 <Route path= '/' element = {<Home/>} exact/>
                 <Route path= '*' element = {<NotFound/>}/>
+                <Route path= '/news' element = {<News/>}/>
             </Routes>
         </BrowserRouter>
     );

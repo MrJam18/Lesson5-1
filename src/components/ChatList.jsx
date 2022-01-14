@@ -72,19 +72,12 @@ const ChatList = () => {
     dispatch(deleteChat(currentChatID));
     dispatch(deleteMessageList(currentChatID));
   }
-  const setFocusOnSender = () => {
-    if (chatID) {
-    const sender = document.querySelector('.sender').querySelector('.MuiInputBase-input');
-    sender.focus();
-    }
-  }
-
     return (
       <>
       <div className="container-flex">
       <List component="nav" aria-label="main mailbox folders" className={'chatList ' + classes.list}>
       {chatList.map((chat)=>{
-        return (<NavLink to={`/chats/${chat.id}`} key= {chat.id} className='link chat-list__link' onClick={setFocusOnSender}>
+        return (<NavLink to={`/chats/${chat.id}`} key= {chat.id} className='link chat-list__link'>
           <ListItem button selected = {chat.id === chatID ? true : false} >
                <ListItemIcon>
                <img src= {`/img/${chat.img}`} alt={chat.name} className='list-img'/>

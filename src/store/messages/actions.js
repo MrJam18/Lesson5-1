@@ -15,9 +15,10 @@ let timeout;
 export const addMessageWithReply = (chatID, message, author, chatAuthor) => (dispatch)=> {
     dispatch(addMessage(chatID, message, author, Date.now()));
     clearTimeout(timeout);
-    timeout = setTimeout(()=>{
-        if (message !== 'hello, i am bot, glad to see you wanderer' ) {
-          dispatch(addMessage(chatID, 'hello, i am bot, glad to see you wanderer', chatAuthor, Date.now()));
+    const botMessage = 'hello, i am bot, glad to see you wanderer';
+        if (message !== botMessage ) {
+            timeout = setTimeout(()=> {
+                dispatch(addMessage(chatID, botMessage, chatAuthor, Date.now()));
+            }, 1500)
         }
-      }, 1500);
 }

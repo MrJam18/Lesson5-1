@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom';
-import './App.css';
+import '../css/App.css';
 import Messages from './Messages.jsx';
 import Sender from './Sender.jsx';
 import {useSelector, useDispatch} from 'react-redux';
