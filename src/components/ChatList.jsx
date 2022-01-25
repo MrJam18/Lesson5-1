@@ -9,12 +9,9 @@ import { NavLink, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Button, Icon, IconButton, TextField } from '@material-ui/core';
 import { useRef } from 'react';
-import { addChat, changeChatListAction, deleteChat } from '../store/chatList/actions';
+import { addChatThunk, deleteChatThunk, iniChatListTrackingThunk } from '../store/chatList/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import { addMessageList, deleteMessageList } from '../store/messages/actions';
 import { getChatList } from '../store/chatList/selectors';
-import { onValue, push, remove, set } from 'firebase/database';
-import { chatListRef, getMsgsRefById } from '../service/firebase';
 
 const useStyles = makeStyles({
     list: {
@@ -29,22 +26,14 @@ const useStyles = makeStyles({
       margin: '15px auto',
     }
 })
-let newChatID = 5;
 const ChatList = () => {
   const chatList = useSelector(getChatList);
-  useEffect(()=> {
-    onValue(chatListRef, (snapshot) => {
-      let chatListArray = [];
-      snapshot.forEach((el) => {
-       chatListArray.push(el.val())
-    });
-    dispatch(changeChatListAction(chatListArray));
-  })}, []);
   const { chatID } = useParams();
   const classes = useStyles();
   const dispatch = useDispatch();
   const input = useRef();
   const [addChatToggle, setAddChatToggle] = useState(true);
+
   const Assistent = ()=> {
       return (
         <div className="chat-list__assistent small-header">Please, select the chat for start messaging</div>
@@ -65,28 +54,21 @@ const ChatList = () => {
       </IconButton>
       </div>
     }
+
+  useEffect(()=> dispatch(iniChatListTrackingThunk()), []);
+  
   const addChatButtonHandler = () => {
     setAddChatToggle(false);
   }
   const addChatHandler = (ev) => {
     ev.preventDefault();
-    newChatID++;
-    const fullChatID = 'chat' + newChatID;
-    push(chatListRef, {name: input.current.value, id: fullChatID, img: 'default.png'});
-    // dispatch(addChat(input.current.value, fullChatID));
-    set(getMsgsRefById(fullChatID), {empty: true});
-    // dispatch(addMessageList(fullChatID))
+    dispatch(addChatThunk(input.current.value));
     setAddChatToggle(true);
   }
   const deleteChatHandler = (ev) => {
     ev.preventDefault();
-    let currentChatID = ev.target.getAttribute('data-id');
-    // dispatch(deleteChat(currentChatID));
-    let newChatList = {...chatList};
-    newChatList = chatList.filter((elem) => elem.id !== currentChatID);
-    set(chatListRef, newChatList);
-    remove(getMsgsRefById(currentChatID));
-    // dispatch(deleteMessageList(currentChatID));
+    const currentChatID = ev.target.getAttribute('data-id');
+    dispatch(deleteChatThunk(currentChatID));
   }
     return (
       <>

@@ -9,6 +9,7 @@ import { getProfileData } from '../store/profile/selectors';
 import { profileRef } from '../service/firebase';
 import { useEffect } from 'react';
 import { set } from "firebase/database";
+import { chandeDateFormatOnRus } from './utils/changeDateFormat';
 
 let gender = 'Мужской';
 
@@ -26,44 +27,27 @@ const useStyles = makeStyles({
     }
 })
 const Profile = ()=> {
-    // let userData = useSelector(getProfileData);
-    // let [userData, setUserData] = useState({showData: true,
-    //     name: 'User',
-    //     surname: 'Default',
-    //     birthDate: '1994-04-17',
-    //     gender: "Мужской",
-    //     isAuthed: true});
     const dispatch = useDispatch();
     const userData = useSelector(getProfileData);
-
- 
     let [profileToggler, setProfileToggler] = useState(true);
     const viewerButtonHandler = ()=> {
         setProfileToggler((old)=> !old)
     }
 
-    useEffect(() => {dispatch(initProfileTracking())}, []);
+    useEffect(() => dispatch(initProfileTracking()), []);
 
     return (
         <div className={styles.profile}>
             <h3>Мой профиль</h3>
-            {profileToggler ? <ProfileViewer userData = {userData} viewerButtonHandler = {viewerButtonHandler} /> : <ProfileChanger userData = {userData} viewerButtonHandler = {viewerButtonHandler} />}
+            {profileToggler ?
+             <ProfileViewer userData = {userData} viewerButtonHandler = {viewerButtonHandler} /> : <ProfileChanger userData = {userData} viewerButtonHandler = {viewerButtonHandler} />}
         </div>
     )
 }
 
 
 const ProfileViewer = ({userData, viewerButtonHandler}) => {
-    // const storeBirthDate = useSelector((store)=> store.profile.birthDate);
-    const chandeDateFormat = (date) => {
-        const dateArray = date.split('-');
-        const rightDate = dateArray.reduce((acc, date)=> {
-            acc = date + '.' + acc;
-            return acc;
-        })
-    return rightDate;
-    }    
-    const birthDate = chandeDateFormat(userData.birthDate);
+    const birthDate = chandeDateFormatOnRus(userData.birthDate);
     return (
             <div className={styles.content}>
                 <div className={styles.box_flex}>
@@ -75,7 +59,6 @@ const ProfileViewer = ({userData, viewerButtonHandler}) => {
                     <div className={styles.box}><div className={styles.header}>Дата рожения</div> <div className={styles.text}>{birthDate}</div></div>
                 </div>
                 <div className={styles.box_center}><button className={styles.button + ' ' + styles.text} onClick={viewerButtonHandler}>Изменить </button></div>
-                
                 </div>
     );
 };

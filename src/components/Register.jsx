@@ -49,8 +49,6 @@ const Register = () => {
     const password = useRef();
     const confirmPassword = useRef();
     const [error, setError] = useState(null);
-    const dispatch = useDispatch();
-
     const registerHadler = async (ev) => {
         setError(null);
         ev.preventDefault();

@@ -1,5 +1,5 @@
-import { push, set } from "firebase/database";
-import { getMsgsRefById } from "../../service/firebase";
+import { onValue, push, set } from "firebase/database";
+import { getMsgsRefById, messageListRef } from "../../service/firebase";
 
 export const changeCurrentMessageListAction = (messageList, chatID) => ({
     type: "MESSAGES::CHANGE_MESSAGE_LIST",
@@ -25,13 +25,23 @@ export const changeMessageListAction = (messageList) => ({
 let timeout;
 export const addMessageWithReply = (chatID, message, author, chatAuthor) => (dispatch)=> {
     push(getMsgsRefById(chatID), {text: message, author, id: Date.now()});
-    // dispatch(addMessage(chatID, message, author, Date.now()));
     clearTimeout(timeout);
     const botMessage = 'hello, i am bot, glad to see you wanderer';
         if (message !== botMessage ) {
             timeout = setTimeout(()=> {
                 push(getMsgsRefById(chatID), {text: botMessage, author: chatAuthor, id: Date.now()})
-                // dispatch(addMessage(chatID, botMessage, chatAuthor, Date.now()));
             }, 1500)
         }
+}
+
+export const initMessagesTrackingThunk = () => (dispatch) => {
+    onValue(messageListRef, (snapshot) => {
+        let newMessageList = {};
+        snapshot.forEach(el => {
+          if (el.key !== 'empty') {
+          newMessageList[el.key] = Object.values(el.val());
+          }
+        })
+        dispatch(changeMessageListAction(newMessageList))
+      })
 }
