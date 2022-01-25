@@ -127,15 +127,6 @@
 .menu__active {
   border-color: black;
 }
-.home {
-  font-size: 1rem;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-  margin-top: 10px;
-  margin-left: 10px;
-}
 .small-header {
   font-size: 1rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -186,8 +177,45 @@
   justify-content: center;
   align-items: center;
 }
+.text-small {
+  font-size: 14px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header__menu-link_auth {
+  display: inline;
+  cursor: pointer;
+}
+.header__menu-element_left {
+  margin-right: auto;
+  margin-left: 20px;
+}
+.flex__center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+.background {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: rgb(187, 185, 185);
+}
+.block-on-background {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+}
 @media screen and (max-width: 1024px) {
   .chatList {
     width: 200px !important;
   }
-} ;
+}

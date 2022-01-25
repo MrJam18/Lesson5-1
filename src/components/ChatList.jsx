@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,10 +9,12 @@ import { NavLink, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Button, Icon, IconButton, TextField } from '@material-ui/core';
 import { useRef } from 'react';
-import { addChat, deleteChat } from '../store/chatList/actions';
+import { addChat, changeChatListAction, deleteChat } from '../store/chatList/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import { addMessageList, deleteMessageList } from '../store/messages/actions';
 import { getChatList } from '../store/chatList/selectors';
+import { onValue, push, remove, set } from 'firebase/database';
+import { chatListRef, getMsgsRefById } from '../service/firebase';
 
 const useStyles = makeStyles({
     list: {
@@ -29,7 +31,15 @@ const useStyles = makeStyles({
 })
 let newChatID = 5;
 const ChatList = () => {
-  const chatList = useSelector(getChatList)
+  const chatList = useSelector(getChatList);
+  useEffect(()=> {
+    onValue(chatListRef, (snapshot) => {
+      let chatListArray = [];
+      snapshot.forEach((el) => {
+       chatListArray.push(el.val())
+    });
+    dispatch(changeChatListAction(chatListArray));
+  })}, []);
   const { chatID } = useParams();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -62,15 +72,21 @@ const ChatList = () => {
     ev.preventDefault();
     newChatID++;
     const fullChatID = 'chat' + newChatID;
-    dispatch(addChat(input.current.value, fullChatID));
-    dispatch(addMessageList(fullChatID))
+    push(chatListRef, {name: input.current.value, id: fullChatID, img: 'default.png'});
+    // dispatch(addChat(input.current.value, fullChatID));
+    set(getMsgsRefById(fullChatID), {empty: true});
+    // dispatch(addMessageList(fullChatID))
     setAddChatToggle(true);
   }
   const deleteChatHandler = (ev) => {
     ev.preventDefault();
     let currentChatID = ev.target.getAttribute('data-id');
-    dispatch(deleteChat(currentChatID));
-    dispatch(deleteMessageList(currentChatID));
+    // dispatch(deleteChat(currentChatID));
+    let newChatList = {...chatList};
+    newChatList = chatList.filter((elem) => elem.id !== currentChatID);
+    set(chatListRef, newChatList);
+    remove(getMsgsRefById(currentChatID));
+    // dispatch(deleteMessageList(currentChatID));
   }
     return (
       <>

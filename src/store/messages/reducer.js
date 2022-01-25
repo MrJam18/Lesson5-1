@@ -22,6 +22,15 @@ export const messagesReducer = (state = initialMessageList, action) => {
             const newState = {...state};
             delete newState[action.chatID];
             return newState;
-        default: return state;
+        case 'MESSAGES::CHANGE_MESSAGE_LIST': 
+            return ({
+                ...state,
+                [action.chatID]: [...action.messageList]
+
+            })
+        case 'MESSAGES::CHANGE':
+            return action.messageList;
+        
+            default: return state;
     }
 }

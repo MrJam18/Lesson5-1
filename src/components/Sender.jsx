@@ -21,15 +21,16 @@ const useStyles = makeStyles({
 
 const Sender = ({handleMessage}) => {
     const {chatID} = useParams();
-    console.log(chatID);
     const input = useRef(null);
     const classes = useStyles();
+
     const inputHandler = (ev) => {
     ev.preventDefault();
     const message = input.current.value;
     handleMessage(message);
     input.current.value = '';
   }
+
   useEffect (() => {
       input.current.focus();
   },[chatID])

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import styles from '../css/news.module.css';
 import '../css/App.css'

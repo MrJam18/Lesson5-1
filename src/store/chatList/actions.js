@@ -6,3 +6,8 @@ export const deleteChat = (chatID) => ({
     type: "CHAT_LIST::DELETE_CHAT",
     chatID
 })
+
+export const changeChatListAction = (chatList) => ({
+    type: "CHAT_LIST::CHANGE",
+    chatList
+})

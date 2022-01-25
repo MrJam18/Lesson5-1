@@ -3,12 +3,15 @@ import '../css/App.css';
 import Messages from './Messages.jsx';
 import Sender from './Sender.jsx';
 import {useSelector, useDispatch} from 'react-redux';
-import { addMessageWithReply } from '../store/messages/actions';
+import { addMessageWithReply, changeMessageListAction } from '../store/messages/actions';
 import { getMessageList } from '../store/messages/selectors';
 import { getChatList } from '../store/chatList/selectors';
 import { getUserName } from '../store/profile/selectors';
+import { onValue } from 'firebase/database';
+import { useEffect } from 'react';
+import { messageListRef } from '../service/firebase';
 
-const Chats = () => {
+const Chat = () => {
   const { chatID } = useParams();
   const messageList = useSelector(getMessageList);
   const dispatch = useDispatch();
@@ -20,15 +23,29 @@ const Chats = () => {
     }
     return false
   })?.name;
+  
 
   const handleMessage = (message) => {
     if (message !== '') {
            dispatch(addMessageWithReply(chatID, message, userName, chatAuthor));
            }
   }
-  if (!messageList[chatID]) {
-    return <Navigate to= '/chats'/>
-  }
+  useEffect(()=> {
+    onValue(messageListRef, (snapshot) => {
+      let newMessageList = {};
+      snapshot.forEach(el => {
+        if (el.key !== 'empty') {
+        newMessageList[el.key] = Object.values(el.val());
+        }
+      })
+      dispatch(changeMessageListAction(newMessageList))
+    })
+  },[])
+  
+if (!messageList[chatID]) {
+  return <Navigate to= '/chats'/>
+}
+
   return (
     <div className="container-right">
       <Messages 
@@ -38,4 +55,4 @@ const Chats = () => {
   );
 }
 
-export default Chats;
+export default Chat;
