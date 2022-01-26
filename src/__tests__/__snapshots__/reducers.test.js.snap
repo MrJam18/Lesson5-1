@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers tests test add chatList from chatList Reducer with snapshots 1`] = `
+Array [
+  Object {
+    "id": "chat1",
+    "img": "chat1.jpg",
+    "name": "John Snow",
+  },
+  Object {
+    "id": "chat2",
+    "img": "chat2.jpg",
+    "name": "Zhanna D'ark",
+  },
+  Object {
+    "id": "chat3",
+    "img": "chat3.jpg",
+    "name": "Geralt from Rivia",
+  },
+  Object {
+    "id": "chat4",
+    "img": "chat4.jpg",
+    "name": "Eniken Skywalker",
+  },
+  Object {
+    "id": "chat5",
+    "img": "chat5.jpg",
+    "name": "bot",
+  },
+  Object {
+    "id": "chat6",
+    "img": "default.png",
+    "name": "Adriano Chelentano",
+  },
+]
+`;
