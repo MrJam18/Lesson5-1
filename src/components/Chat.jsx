@@ -7,7 +7,7 @@ import { addMessageWithReply, initMessagesTrackingThunk } from '../store/message
 import { getMessageList } from '../store/messages/selectors';
 import { getChatList } from '../store/chatList/selectors';
 import { getUserName } from '../store/profile/selectors';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 const Chat = () => {
   const { chatID } = useParams();

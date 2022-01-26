@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { getAuthed } from '../store/profile/selectors';
 
-const PrivateAccess = ({wrapped}) => {
+const PrivateAccess = ({Wrapped}) => {
     const authorization = useSelector(getAuthed);
-    return authorization ? wrapped : <Navigate to= '/' />
+    return authorization ? Wrapped : <Navigate to= '/' />
 };
 
 export default PrivateAccess;

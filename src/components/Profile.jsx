@@ -104,4 +104,6 @@ const ProfileChanger = ({userData, viewerButtonHandler}) => {
                     </form>)
     }
 
+// export const ProfilePure = React.memo(Profile)
+// const ProfileViewerPure = React.memo(ProfileViewer)
 export default Profile;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 import Chat from './Chat.jsx';
 import ChatList from './ChatList.jsx';
@@ -32,19 +32,23 @@ const Router = () => {
           }
         })
       }, []);
-    
+      const ChatListLazy = lazy(() => import('./ChatList.jsx'));
+      const ChatLazy = lazy(() => import('./Chat.jsx'));
+   
     return (
         <BrowserRouter>
+                    <Suspense fallback = {<p>Loading...</p>}>
             <ul className='header-menu'>
                 {isAuthed ? (<li className='header-menu-element header__menu-element_left' onClick={logoutHandler}><div className="header-menu-link header__menu-link_auth">LOG OUT</div></li>) : (<li className='header-menu-element header__menu-element_left'><NavLink to='/' className = {({isActive})=> isActive ? 'header-menu-link header__menu-link_auth menu__active' : 'header-menu-link header__menu-link_auth'}>LOG IN</NavLink></li>)}
                 <li className='header-menu-element'><NavLink to='chats' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >CHATS</NavLink></li>
                 <li className='header-menu-element'><NavLink to='profile' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >PROFILE</NavLink></li>
                 <li className='header-menu-element'><NavLink to='news' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >NEWS</NavLink></li>
             </ul>
+
             <Routes>
-                <Route path='/profile' element= {<PrivateAccess wrapped = {<Profile/> }/>}  exact></Route>
-                <Route path='/chats' element= {<PrivateAccess wrapped = {<ChatList/> }/>}  exact>
-                    <Route path=':chatID' element= {<Chat/>} exact></Route>
+                <Route path='/profile' element= {<PrivateAccess Wrapped = {<Profile/> }/>}  exact></Route>
+                <Route path='/chats' element= {<PrivateAccess Wrapped = {<ChatListLazy/>}/>}  exact>
+                    <Route path=':chatID' element= {<ChatLazy/>} exact></Route>
                     <Route path= '*' element = {<NotFound/>}/>
                 </Route>
                 <Route path= '/' element = {<PublicAccess wrapped = {<Login/>}/>} exact />
@@ -52,6 +56,8 @@ const Router = () => {
                 <Route path= '*' element = {<NotFound/>}/>
                 <Route path= '/news' element = {<News/>}/>
             </Routes>
+            </Suspense>
+            
         </BrowserRouter>
     );
 };

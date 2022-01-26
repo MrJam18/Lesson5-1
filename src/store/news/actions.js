@@ -15,7 +15,6 @@ const setLoading = (loading) => ({
 export const fetchNews = () => async (dispatch) => {
     dispatch(setError(false));
     dispatch(setLoading(true));
-    console.log('ewasd');
     try {
         const res = await fetch(API);
         if (!res.ok) {
@@ -26,7 +25,6 @@ export const fetchNews = () => async (dispatch) => {
         dispatch(changeNews(result.data));
     }
     catch (err) {
-        console.dir(err);
         dispatch(setError(err.message));
     }
     finally {

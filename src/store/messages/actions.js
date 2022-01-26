@@ -1,4 +1,4 @@
-import { onValue, push, set } from "firebase/database";
+import { onValue, push } from "firebase/database";
 import { getMsgsRefById, messageListRef } from "../../service/firebase";
 
 export const changeCurrentMessageListAction = (messageList, chatID) => ({

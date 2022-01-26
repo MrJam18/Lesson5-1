@@ -3,7 +3,6 @@ import { set } from 'firebase/database';
 import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from '../css/register.module.css'
 import { profileRef, signUp } from '../service/firebase';
