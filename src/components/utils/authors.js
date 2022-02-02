@@ -1,3 +1,2 @@
 
-let authors = {bot: 'bot', user: 'user',}
-export default authors;
+export const authors = {bot: 'bot', user: 'user',}

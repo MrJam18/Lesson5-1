@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import './App.css';
 import Messages from './Messages.jsx';
 import Sender from './Sender.jsx';
-import authors from './utils/authors';
+import {authors} from './utils/authors';
 
 const Chats = ({pushMessage, messageList, chatList}) => {
   const { chatID } = useParams();
