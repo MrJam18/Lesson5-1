@@ -24,17 +24,20 @@ const Router = () => {
     let [messageList, setMessageList] = useState(initialMessageList);
       const pushMessage = (text, author, chatID) => {
         setMessageList((oldMessageList) => {
-          let newMessageList = {...oldMessageList, [chatID]: [...oldMessageList[chatID], {text, author, id: Date.now()}]};
+          let newMessageList = {...oldMessageList};
+          newMessageList[chatID] = [...oldMessageList[chatID], {text: text, author: author, id: Date.now()}];
           return newMessageList;
         });
       }
     const pushChatList = (chatName) => {
       newChatID++;
       setChatList((oldChatList)=>{
+        console.log(newChatID)
         return [...oldChatList, {name: chatName, id: 'chat' + newChatID, img: 'default.png'}]
       })
       setMessageList((oldMessageList)=> {
-        let newMessageList = {...oldMessageList, ['chat' + newChatID]: []};
+        let newMessageList = {...oldMessageList};
+        newMessageList['chat' + newChatID] = [];
         return newMessageList;
       })
     }
@@ -47,6 +50,7 @@ const Router = () => {
           }
         })
         newElem.splice(index, 1)
+        console.log('dawdsa')
         return newElem;
       })
     }
@@ -55,17 +59,17 @@ const Router = () => {
     return (
         <BrowserRouter>
             <ul className='header-menu'>
-                <li className='header-menu-element'><NavLink to='/' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'}>HOME</NavLink></li>
-                <li className='header-menu-element'><NavLink to='chats' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >CHATS</NavLink></li>
-                <li className='header-menu-element'><NavLink to='profile' className = {({isActive})=> isActive ? 'header-menu-link menu__active' : 'header-menu-link'} >PROFILE</NavLink></li>
+                <li className='header-menu-element'><NavLink to='/' className='header-menu-link' exact >HOME</NavLink></li>
+                <li className='header-menu-element'><NavLink to='chats' className='header-menu-link' exact >CHATS</NavLink></li>
+                <li className='header-menu-element'><NavLink to='profile' className='header-menu-link' exact >PROFILE</NavLink></li>
             </ul>
             <Routes>
                 <Route path='/profile' element= {<Profile />} exact></Route>
                 <Route path= '/chats' element = {<ChatList chatList = {chatList} pushChatList = {pushChatList} deleteChat = {deleteChat}/>} exact>
-                    <Route path=':chatID' element= {<Chats pushMessage= {pushMessage} messageList = {messageList} chatList = {chatList}></Chats>} exact></Route>
+                    <Route path=':chatID' element= {<Chats pushMessage= {pushMessage} messageList = {messageList} chatList = {chatList}></Chats>}></Route>
                     <Route path= '*' element = {<NotFound/>}/>
                 </Route>
-                <Route path= '/' element = {<Home/>} exact/>
+                <Route path= '/' element = {<Home/>}/>
                 <Route path= '*' element = {<NotFound/>}/>
             </Routes>
         </BrowserRouter>

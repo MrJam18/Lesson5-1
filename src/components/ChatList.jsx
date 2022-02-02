@@ -72,7 +72,7 @@ const ChatList = ({chatList, pushChatList, deleteChat}) => {
                <img src= {`/img/${chat.img}`} alt={chat.name} className='list-img'/>
                </ListItemIcon>
                <ListItemText primary={chat.name} />
-               <i className="fas fa-times chat-list__button_delete" data-id = {chat.id} onClick={deleteChatHandler}></i>
+               <i class="fas fa-times chat-list__button_delete" data-id = {chat.id} onClick={deleteChatHandler}></i>
              </ListItem>
              </NavLink>)
       })}

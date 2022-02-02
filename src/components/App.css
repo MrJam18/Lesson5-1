@@ -98,9 +98,65 @@
   position: relative;
   flex-grow: 1;
 }
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(187, 185, 185);
+  height: calc(100vh - 54px);
+}
+.profile-box-flex {
+  display: flex;
+  justify-content: start;
+  margin-left: 70px;
+}
+.profile-box {
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+.profile-header {
+  font-weight: bold;
+  font-size: small;
+}
+.profile-text {
+  font-size: small;
+}
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.profile-photo {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.profile-header-photo {
+  margin-left: 4px;
+}
+.profileChanger {
+  background-color: #6aaff4;
+  border-radius: 8px;
+  border: none;
+  padding: 2px 8px;
+
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(96, 184, 251, 0.2);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(96, 184, 251, 0.2);
+  box-shadow: 0px 0px 24px 0px rgba(96, 184, 251, 0.2);
+  font-weight: 500;
+  cursor: pointer;
+}
+.profile-box-center {
+  display: flex;
+  justify-content: center;
+}
 .container__position_center {
   display: flex;
   justify-content: center;
+}
+.profile-content {
+  padding: 20px 0;
+  border-radius: 10%;
+  background-color: white;
 }
 .header-menu {
   display: flex;
@@ -124,7 +180,10 @@
 .header-menu-link:hover {
   border-color: black;
 }
-.menu__active {
+.header-menu .active {
+  border-color: black;
+}
+.active:hover {
   border-color: black;
 }
 .home {
@@ -168,9 +227,6 @@
 }
 .chat-list__link:hover .chat-list__button_delete {
   opacity: 1;
-}
-.margin-0 {
-  margin: 0 !important;
 }
 
 @media screen and (max-width: 1024px) {
