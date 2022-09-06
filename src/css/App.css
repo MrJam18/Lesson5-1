@@ -1,0 +1,221 @@
+.sender {
+  height: 50px;
+  background: #c6eaec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  background: -moz-linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  background: linear-gradient(
+    180deg,
+    rgb(253, 253, 253) 27%,
+    rgb(202, 246, 247) 64%,
+    rgb(168, 227, 232) 84%
+  );
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+.container {
+  max-width: 1170px;
+  margin: auto;
+}
+.container-flex {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+.sender-input {
+  background-color: transparent;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 95%;
+  font-size: 200%;
+  font-family: monospace;
+  padding: 0;
+}
+.sender-input:focus {
+  outline: none;
+}
+.sender-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  cursor: pointer;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  background-color: #6aaff4;
+}
+.fa-paper-plane {
+  font-size: 170%;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 104px);
+  overflow: auto;
+}
+.message {
+  margin: 10px;
+}
+.message-author-me {
+  align-self: flex-end;
+  text-align: right;
+}
+.message-header {
+  font-weight: 500;
+}
+.list-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.senderPlace {
+  height: 50px;
+}
+.container-right {
+  height: 100%;
+  position: relative;
+  flex-grow: 1;
+}
+.container__position_center {
+  display: flex;
+  justify-content: center;
+}
+.header-menu {
+  display: flex;
+  justify-content: right;
+  background-color: darkcyan;
+  margin: 0;
+  padding: 16px 0;
+}
+.header-menu-element {
+  list-style-type: none;
+  margin-right: 30px;
+}
+.header-menu-link {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: black;
+  text-decoration: none;
+  padding: 11px 2px;
+  border-bottom: 5px solid transparent;
+  transition: border-color 0.3s linear;
+}
+.header-menu-link:hover {
+  border-color: black;
+}
+.menu__active {
+  border-color: black;
+}
+.small-header {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+.chatList {
+  height: calc(100vh - 54px);
+}
+.chat-list__assistent {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.add-chat-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chat-list__button_delete {
+  opacity: 0;
+  transition: opacity 0.2s;
+  /* width: 50px;
+  height: 50px;
+  font-size: 50px; */
+}
+.chat-list__link:hover .chat-list__button_delete {
+  opacity: 1;
+}
+.margin-0 {
+  margin: 0 !important;
+}
+.message__time {
+  color: grey;
+  font-weight: 400;
+  font-size: 12.5px;
+  margin-left: 5px;
+}
+.flexBox {
+  display: flex;
+}
+.MuiCircularProgress-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-small {
+  font-size: 14px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header__menu-link_auth {
+  display: inline;
+  cursor: pointer;
+}
+.header__menu-element_left {
+  margin-right: auto;
+  margin-left: 20px;
+}
+.flex__center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+}
+.background {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: rgb(187, 185, 185);
+}
+.block-on-background {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+@media screen and (max-width: 1024px) {
+  .chatList {
+    width: 200px !important;
+  }
+}

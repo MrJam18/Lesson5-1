@@ -1,0 +1,20 @@
+.registerBlock {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px;
+}
+.gender {
+  margin-top: 20px;
+}
+.signIn {
+  margin-top: 30px;
+}
+.signInLink {
+  padding-left: 5px;
+  display: inline-flex;
+}
+.error {
+  color: red;
+  margin-top: 20px;
+}

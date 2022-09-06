@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test News to Compare render with snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="news"
+      >
+        <a
+          class="newsBlock"
+          href="https://lenta.ru/news/2021/10/18/44_team_spirit/"
+        >
+          <div
+            class="small-header boldText"
+          >
+            Бывший владелец Virtus.pro выиграл 44 миллиона рублей на победе Team Spirit
+          </div>
+          <img
+            alt="Lenta"
+            class="image"
+            src="https://icdn.lenta.ru/images/2021/10/18/05/20211018050423260/pic_19538ff4b39d63fe7d0cea14f74efd7e.jpg"
+          />
+          <div
+            class="text"
+          >
+            Бывший владелец российской киберспортивной команды Virtus.pro Антон Черепенников выиграл более 44 миллионов рублей после победы Team Spirit в финале международных соревнований по Dota 2 The International 10. Бизнесмен поставил 1,53 миллиона рублей при коэффициенте ставки 29. «Верил с 1 дня», — написал он.
+          </div>
+          <div
+            class="source"
+          >
+            Источник: 
+            Lenta
+            .
+          </div>
+        </a>
+        <a
+          class="newsBlock"
+          href="https://rg.ru/2021/10/27/hyundai-tucson-i-toyota-yaris-cross-stali-otlichnikami-krash-testov.html"
+        >
+          <div
+            class="small-header boldText"
+          >
+            Hyundai Tucson и Toyota Yaris Cross стали отличниками краш-тестов
+          </div>
+          <img
+            alt="RG.ru Rossiyskaya Gazeta"
+            class="image"
+            src="https://cdnimg.rg.ru/img/content/219/79/15/596562.jpg"
+          />
+          <div
+            class="text"
+          >
+            Hyundai Tucson и Toyota Yaris Cross стали отличниками краш-тестов
+          </div>
+          <div
+            class="source"
+          >
+            Источник: 
+            RG.ru Rossiyskaya Gazeta
+            .
+          </div>
+        </a>
+        <a
+          class="newsBlock"
+          href="https://ria.ru/20211101/shtraf-1757182301.html"
+        >
+          <div
+            class="small-header boldText"
+          >
+            В РКН рассказали о штрафах Facebook, Twitter, Telegram, Google и Tiktok
+          </div>
+          <div
+            class="text"
+          >
+            Российские суды в 2021 году за неудаление запрещенной информации оштрафовали Facebook, Twitter, Telegram, Google и TikTok на 180 миллионов рублей, сообщил Роскомнадзор.
+          </div>
+          <div
+            class="source"
+          >
+            Источник: 
+            RIA Novosti
+            .
+          </div>
+        </a>
+        <a
+          class="newsBlock"
+          href="https://lenta.ru/news/2021/11/08/csgo/"
+        >
+          <div
+            class="small-header boldText"
+          >
+            Российско-украинская команда NaVi выиграла чемпионат мира по CS:GO
+          </div>
+          <img
+            alt="Lenta.ru"
+            class="image"
+            src="https://icdn.lenta.ru/images/2021/11/08/01/20211108012447548/pic_f8fd2b79d9882f42236494807bb099f4.jpg"
+          />
+          <div
+            class="text"
+          >
+            Команда NaVi, в состав которой входят российские и украинские киберспортсмены, победила в турнире PGL Major Stockholm 2021 по компьютерной игре CS:GO. В финале NaVi обыграли европейскую команду G2 Esports. Встреча завершилась со счетом 2-0 (16:11 на Ancient, 22:19 на Nuke).
+          </div>
+          <div
+            class="source"
+          >
+            Источник: 
+            Lenta.ru
+            .
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="news"
+    >
+      <a
+        class="newsBlock"
+        href="https://lenta.ru/news/2021/10/18/44_team_spirit/"
+      >
+        <div
+          class="small-header boldText"
+        >
+          Бывший владелец Virtus.pro выиграл 44 миллиона рублей на победе Team Spirit
+        </div>
+        <img
+          alt="Lenta"
+          class="image"
+          src="https://icdn.lenta.ru/images/2021/10/18/05/20211018050423260/pic_19538ff4b39d63fe7d0cea14f74efd7e.jpg"
+        />
+        <div
+          class="text"
+        >
+          Бывший владелец российской киберспортивной команды Virtus.pro Антон Черепенников выиграл более 44 миллионов рублей после победы Team Spirit в финале международных соревнований по Dota 2 The International 10. Бизнесмен поставил 1,53 миллиона рублей при коэффициенте ставки 29. «Верил с 1 дня», — написал он.
+        </div>
+        <div
+          class="source"
+        >
+          Источник: 
+          Lenta
+          .
+        </div>
+      </a>
+      <a
+        class="newsBlock"
+        href="https://rg.ru/2021/10/27/hyundai-tucson-i-toyota-yaris-cross-stali-otlichnikami-krash-testov.html"
+      >
+        <div
+          class="small-header boldText"
+        >
+          Hyundai Tucson и Toyota Yaris Cross стали отличниками краш-тестов
+        </div>
+        <img
+          alt="RG.ru Rossiyskaya Gazeta"
+          class="image"
+          src="https://cdnimg.rg.ru/img/content/219/79/15/596562.jpg"
+        />
+        <div
+          class="text"
+        >
+          Hyundai Tucson и Toyota Yaris Cross стали отличниками краш-тестов
+        </div>
+        <div
+          class="source"
+        >
+          Источник: 
+          RG.ru Rossiyskaya Gazeta
+          .
+        </div>
+      </a>
+      <a
+        class="newsBlock"
+        href="https://ria.ru/20211101/shtraf-1757182301.html"
+      >
+        <div
+          class="small-header boldText"
+        >
+          В РКН рассказали о штрафах Facebook, Twitter, Telegram, Google и Tiktok
+        </div>
+        <div
+          class="text"
+        >
+          Российские суды в 2021 году за неудаление запрещенной информации оштрафовали Facebook, Twitter, Telegram, Google и TikTok на 180 миллионов рублей, сообщил Роскомнадзор.
+        </div>
+        <div
+          class="source"
+        >
+          Источник: 
+          RIA Novosti
+          .
+        </div>
+      </a>
+      <a
+        class="newsBlock"
+        href="https://lenta.ru/news/2021/11/08/csgo/"
+      >
+        <div
+          class="small-header boldText"
+        >
+          Российско-украинская команда NaVi выиграла чемпионат мира по CS:GO
+        </div>
+        <img
+          alt="Lenta.ru"
+          class="image"
+          src="https://icdn.lenta.ru/images/2021/11/08/01/20211108012447548/pic_f8fd2b79d9882f42236494807bb099f4.jpg"
+        />
+        <div
+          class="text"
+        >
+          Команда NaVi, в состав которой входят российские и украинские киберспортсмены, победила в турнире PGL Major Stockholm 2021 по компьютерной игре CS:GO. В финале NaVi обыграли европейскую команду G2 Esports. Встреча завершилась со счетом 2-0 (16:11 на Ancient, 22:19 на Nuke).
+        </div>
+        <div
+          class="source"
+        >
+          Источник: 
+          Lenta.ru
+          .
+        </div>
+      </a>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
